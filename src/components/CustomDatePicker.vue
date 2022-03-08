@@ -1,12 +1,15 @@
 <template>
-	<b-field>
+	<b-field :size="size">
 		<b-datepicker
 			:size="size"
 			:placeholder="inputPlaceholder"
 			:min-date="min"
 			:max-date="max"
-            :type="datePickerType"
-            :custom-class="customClassvalue"
+			:type="datePickerType"
+			:custom-class="customClassvalue"
+			editable
+			:unselectable-dates="unselectableDates"
+			:unselectable-days-of-week="disableWeekends ? [0, 6] : null"
 		>
 		</b-datepicker>
 	</b-field>
@@ -18,28 +21,25 @@
 		props: {
 			labelText: String,
 			size: String,
-            inputPlaceholder: String,
-            min:String,
-            max:String,
-            datePickerType: String,
-            customClassvalue: String,
+			inputPlaceholder: String,
+			min: String,
+			max: String,
+			datePickerType: String,
+			customClassvalue: String,
 		},
 		data() {
-			const today = new Date();
+			// const today = new Date();
 
 			return {
 				date: new Date(),
-				minDate: new Date(
-					today.getFullYear() - 80,
-					today.getMonth(),
-					today.getDate(),
-				),
-				maxDate: new Date(
-					today.getFullYear() + 18,
-					today.getMonth(),
-					today.getDate(),
-				),
+				disableWeekends: false,
+				unselectableAfterDate: 20,
 			};
+		},
+		methods: {
+			unselectableDates(day) {
+				return this.unselectableAfterDate < day.getDate();
+			},
 		},
 	};
 </script>

@@ -11,8 +11,13 @@
 					<div class="field">
 						<label class="label">Date of Birth</label>
 						<div class="control">
-							<!-- <input class="input" type="date" placeholder="dd/mm/yyyy" /> -->
-							<CustomDatePicker labelText="Date of Birth" />
+							<CustomDatePicker
+								size="is-medium"
+								inputPlaceholder="dd/mm/yyyy"
+								:min="minDate"
+								:max="maxDate"
+								datePickerType="month"
+							/>
 						</div>
 					</div>
 				</div>
@@ -90,11 +95,26 @@
 		},
 		data() {
 			return {
+				minDate: new Date(
+					today.getFullYear() - 40,
+					today.getMonth(),
+					today.getDate(),
+				),
+				maxDate: new Date(
+					today.getFullYear() + 1,
+					today.getMonth(),
+					today.getDate(),
+				),
 				radioObj: {
 					labels: ['Male', 'Female', 'Others'],
 					labelsIcon: ['tick', 'cross'],
 				},
-				coverageYears: [{ id: 1, name: '10 years' },{ id: 2, name: '15 years' },{ id: 3, name: '20 years' },{ id: 4, name: '30 years' }],
+				coverageYears: [
+					{ id: 1, name: '10 years' },
+					{ id: 2, name: '15 years' },
+					{ id: 3, name: '20 years' },
+					{ id: 4, name: '30 years' },
+				],
 			};
 		},
 	};

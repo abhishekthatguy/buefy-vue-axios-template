@@ -89,91 +89,97 @@
 						is-3
 						label="Have you used any tobacco product(s) in the last 5 years? Select all that apply."
 					>
-						<div class="columns is-3">
+						<div class="columns">
 							<div class="column">
-								<b-radio-button
+								<b-checkbox-button
 									v-model="tobaccoUse"
 									:size="elementsHeight"
 									native-value="cigrettes"
-									class="w-210"
+									class="w-210 block"
 									type="is-outlined"
 								>
 									<span>Cigrettes</span>
-								</b-radio-button>
+								</b-checkbox-button>
 
-								<b-radio-button
+								<b-checkbox-button
 									v-model="tobaccoUse"
 									:size="elementsHeight"
 									native-value="cigar"
-									type="is-primary  is-outlined"
-									class="w-210"
+									type="is-outlined"
+									class="w-210 block"
 								>
 									<span>Cigar</span>
-								</b-radio-button>
-								<b-radio-button
+								</b-checkbox-button>
+								<b-checkbox-button
 									v-model="tobaccoUse"
 									:size="elementsHeight"
 									native-value="pipes"
-									type="is-primary  is-outlined"
-									class="w-210"
+									type="is-outlined"
+									class="w-210 block"
 								>
 									<span>Pipes</span>
-								</b-radio-button>
+								</b-checkbox-button>
 							</div>
 							<div class="column">
-								<b-radio-button
+								<b-checkbox-button
 									v-model="tobaccoUse"
 									:size="elementsHeight"
 									native-value="chewingTobacco"
-									type="is-primary  is-outlined"
-									class="w-210"
+									type="is-outlined"
+									class="w-210 block"
 								>
 									<span>Chewing tobacco</span>
-								</b-radio-button>
-								<b-radio-button
+								</b-checkbox-button>
+								<b-checkbox-button
 									v-model="tobaccoUse"
 									:size="elementsHeight"
 									native-value="necotine"
-									type="is-primary  is-outlined"
-									class="w-210"
+									type="is-outlined"
+									class="w-210 block"
 								>
 									<span>Necotine patch/gum</span>
-								</b-radio-button>
-								<b-radio-button
+								</b-checkbox-button>
+								<b-checkbox-button
 									v-model="tobaccoUse"
 									:size="elementsHeight"
 									native-value="others"
-									type="is-primary  is-outlined"
-									class="w-210"
+									type="is-outlined"
+									class="w-210 block"
 								>
 									<span>Others</span>
-								</b-radio-button>
+								</b-checkbox-button>
 							</div>
 						</div>
 					</b-field>
-					<b-field v-if="tobaccoUse === 'cigrettes'">
-						<template #label>
-							When was the last time you used cigarettes?
-							<span class="has-text-mute is-italic"
-								><i class="fa fa-info-circle"
-							/></span>
-						</template>
-						<b-field>
-							<CustomDatePicker
-								:size="elementsHeight"
-								inputPlaceholder="MM/YYYY"
-								labelText="Date of Birth"
-								:min="minDate"
-								:max="maxDate"
-								datePickerType="month"
-								customClassvalue="w-210"
-							/>
-						</b-field>
-					</b-field>
-					<b-field v-if="tobaccoUse === 'cigrettes'">
+					<div v-for="option in tobaccoUse" :key="option">
+						<div v-if="option === 'cigrettes'" >
+							<b-field>
+								<template #label>
+								When was the last time you used cigarettes?
+								<span class="has-text-mute is-italic"
+									><i class="fa fa-info-circle"
+								/></span>
+							</template>
+							</b-field>
+							<b-field>
+								<CustomDatePicker
+									:size="elementsHeight"
+									inputPlaceholder="MM/YYYY"
+									labelText="Date of Birth"
+									:min="minDate"
+									:max="maxDate"
+									datePickerType="month"
+									customClassvalue="w-210"
+								/>
+							</b-field>
+							
+						</div>
+						<div v-if="option === 'cigrettes'">
+						<b-field >
 						<template #label>
 							On average, how many cigarettes per day do/did you smoke?
 						</template>
+						</b-field>
 						<b-field>
 							<NumberInput
 								customClassvalue="w-290"
@@ -184,7 +190,45 @@
 								:size="elementsHeight"
 							/>
 						</b-field>
+					</div>
+					<b-field v-if="option === 'cigar'">
+							<template #label>
+								When was the last time you used cigars?
+								<span class="has-text-mute is-italic"
+									><i class="fa fa-info-circle"
+								/></span>
+							</template>
+							<b-field>
+								<CustomDatePicker
+									:size="elementsHeight"
+									inputPlaceholder="MM/YYYY"
+									labelText="Date of Birth"
+									:min="minDate"
+									:max="maxDate"
+									datePickerType="month"
+									customClassvalue="w-210"
+								/>
+							</b-field>
+						</b-field>
+							<b-field v-if="option === 'cigar'">
+						<template #label>
+							On average, how many cigars per day do/did you smoke?
+						</template>
+						<b-field>
+							<NumberInput
+								customClassvalue="w-290"
+								addonLabelRight="per month"
+								inputPlaceholder="Figures Only"
+								minValue="0"
+								maxValue="60"
+								:size="elementsHeight"
+							/>
+						</b-field>
 					</b-field>
+					</div>
+					<!-- v-if="tobaccoUse === 'cigrettes'" -->
+
+				
 
 					<hr />
 					<CustomTitleLight titleText="Blood Pressure" />
@@ -325,29 +369,39 @@
 						v-if="drivingHistory === 'yes'"
 						type="is-danger"
 						grouped
-						is-3
+						:custom-class="is - 5"
 						label="Have you had more than one accident?"
 					>
 						<b-radio-button
-							v-model="radioWeight"
+							v-model="moreThanOneAccident"
 							:size="elementsHeight"
-							native-value="Nope"
+							native-value="yes"
 							type=" is-primary-outlined  is-outlined"
 						>
 							<span>Yes</span>
 						</b-radio-button>
-						<b-field label="in"></b-field>
-						<b-field>
-							<NumberInput
-								customClassvalue="w-290"
-								inputPlaceholder="MM/YYYY"
-							/>
-							<CustomDatePicker labelText="Date of Birth" />
-						</b-field>
-						<b-radio-button
-							v-model="radioButton"
+
+						<b-button
+							type="is-ghost has-text-grey"
+							:size="size"
+							v-if="moreThanOneAccident === 'yes'"
+							>in</b-button
+						>
+						<CustomDatePicker
+							v-if="moreThanOneAccident === 'yes'"
 							:size="elementsHeight"
-							native-value="Yep"
+							inputPlaceholder="MM/YYYY"
+							labelText="Violation Month"
+							:min="minDate"
+							:max="maxDate"
+							datePickerType="month"
+							:customClassvalue="['w-210', 'is-align-content-flex-start']"
+						/>
+
+						<b-radio-button
+							v-model="moreThanOneAccident"
+							:size="elementsHeight"
+							native-value="no"
 							type="is-primary  is-outlined"
 						>
 							<span>No</span>
@@ -381,7 +435,7 @@
 					</b-field>
 					<b-field
 						grouped
-						custom-class="is-3"
+						:custom-class="is - 3"
 						v-if="movingViolations === 'yes'"
 					>
 						<b-field>
@@ -394,13 +448,17 @@
 								:size="elementsHeight"
 							/>
 						</b-field>
-						<b-field label="in"></b-field>
+						<b-button type="is-ghost has-text-grey" :size="size">in</b-button>
 						<b-field>
-							<NumberInput
-								customClassvalue="w-290"
+							<CustomDatePicker
+								:size="elementsHeight"
 								inputPlaceholder="MM/YYYY"
+								labelText="Violation Month"
+								:min="minDate"
+								:max="maxDate"
+								datePickerType="month"
+								customClassvalue="w-210"
 							/>
-							<CustomDatePicker labelText="" />
 						</b-field>
 					</b-field>
 					<hr />
@@ -496,12 +554,13 @@
 				size: 'is-medium',
 				radioWeight: 'lbs',
 				familyMedical: 'no',
-				tobaccoUse: 'others',
+				tobaccoUse: [],
 				highBloodPressure: 'no',
 				highCholesterol: 'no',
 				drivingHistory: 'no',
 				familyMedicalHistory: 'no',
 				movingViolations: 'no',
+				moreThanOneAccident: 'no',
 			};
 		},
 		computed: {
@@ -526,12 +585,10 @@
 	.w-210 {
 		width: 210px !important;
 		max-width: 210px !important;
-		margin: 1rem 0rem 1rem 0rem;
 	}
 	.w-290 {
 		width: 300px !important;
 		max-width: 300px !important;
-		/* margin: 1rem 0rem 1rem 0rem; */
 	}
 	.labelLeftClass {
 		width: 100px;
