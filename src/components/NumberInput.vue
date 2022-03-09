@@ -1,22 +1,6 @@
 <template>
 	<div>
 		<template>
-			<!-- <div class="field" >
-  <p class="control has-icons-left has-icons-right">
-    <input class="input" type="number" :placeholder="inputPlaceholder">
-    <span class="icon is-small is-left has-text-black is-6 ">
-     {{addonLabelLeft}}
-    </span>
-    <span class="icon is-small is-right has-text-black is-6">
-  {{addonLabelRight}}
-    </span>
-  </p>
-</div> -->
-
-
-		
-				
-
 			<b-field custom-class="p-relative">
 				<p class="control" v-if="addonLabelLeft">
 					<b-button
@@ -60,7 +44,7 @@
 			maxValue: String,
 			addonLabelLeftClass: String,
 			size: String,
-			universalClass:String,
+			universalClass: String,
 		},
 		data() {
 			return {
@@ -76,7 +60,4 @@
 	.prelative {
 		position: relative !important;
 	}
-	/* .tempClass{
-		padding: 0 50px !important;
-	} */
 </style>
