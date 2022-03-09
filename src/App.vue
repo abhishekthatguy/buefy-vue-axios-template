@@ -74,7 +74,7 @@
 		top: 50%;
 		right: 50%;
 		transform: translate(-50%, -50%);
-		z-index: 1;
+		z-index: 9;
 		background: transparent;
 		padding: 0px !important;
 		margin: 0px;
@@ -89,7 +89,7 @@
 	.inputLeftAddonText {
 		border: 0px !important;
 		position: absolute !important;
-		z-index: 1;
+		z-index: 9;
 		background: transparent;
 		font-size: 16px !important;
 		top: 50%;
