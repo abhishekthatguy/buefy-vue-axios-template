@@ -16,7 +16,6 @@
 								inputPlaceholder="dd/mm/yyyy"
 								:min="minDate"
 								:max="maxDate"
-								datePickerType="month"
 							/>
 						</div>
 					</div>
@@ -94,6 +93,7 @@
 			CustomRadioButtonSmoker,
 		},
 		data() {
+			const today = new Date();
 			return {
 				minDate: new Date(
 					today.getFullYear() - 40,
