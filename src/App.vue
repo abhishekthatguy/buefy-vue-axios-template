@@ -55,7 +55,7 @@
 		font-family: 'Lato', sans-serif;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-		margin: 60px 0px 0px;
+		/* margin: 60px 0px 0px; */
 	}
 	/* .is-clearfix::after {
     clear: both;

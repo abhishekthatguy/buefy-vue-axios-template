@@ -33,10 +33,10 @@
 								>(Enter in cms)</span
 							>
 						</template>
-						<b-field grouped custom-class="is-2 has-text-left">
+						<b-field grouped custom-class="classes">
 							<b-field>
 								<NumberInput
-									customClassvalue="w-120"
+									:customClassvalue="classes"
 									addonLabelRight="ft"
 									inputPlaceholder="e.g. 5"
 									minValue="0"
@@ -47,7 +47,7 @@
 							</b-field>
 							<b-field>
 								<NumberInput
-									customClassvalue="w-120"
+									:customClassvalue="classes"
 									addonLabelRight="in"
 									inputPlaceholder="e.g. 9"
 									minValue="0"
@@ -60,7 +60,8 @@
 					<b-field type="is-danger" grouped is-3 label="Your Weight">
 						<b-input
 							:size="elementsHeight"
-							custom-class="has-text-danger is-2 w-120"
+							:customClassvalue="classes"
+							class="w-120"
 							placeholder="e.g. 160"
 						></b-input>
 						<b-radio-button
@@ -95,8 +96,8 @@
 									v-model="tobaccoUse"
 									:size="elementsHeight"
 									native-value="cigrettes"
-									class="w-210 block"
-									type="is-outlined"
+									class="w-210 block has-text-primary"
+									type="is-primary is-outlined"
 								>
 									<span>Cigrettes</span>
 								</b-checkbox-button>
@@ -105,7 +106,7 @@
 									v-model="tobaccoUse"
 									:size="elementsHeight"
 									native-value="cigar"
-									type="is-outlined"
+									type="is-primary is-outlined"
 									class="w-210 block"
 								>
 									<span>Cigar</span>
@@ -114,7 +115,7 @@
 									v-model="tobaccoUse"
 									:size="elementsHeight"
 									native-value="pipes"
-									type="is-outlined"
+									type="is-primary is-outlined"
 									class="w-210 block"
 								>
 									<span>Pipes</span>
@@ -125,7 +126,7 @@
 									v-model="tobaccoUse"
 									:size="elementsHeight"
 									native-value="chewingTobacco"
-									type="is-outlined"
+									type="is-primary is-outlined"
 									class="w-210 block"
 								>
 									<span>Chewing tobacco</span>
@@ -134,7 +135,7 @@
 									v-model="tobaccoUse"
 									:size="elementsHeight"
 									native-value="necotine"
-									type="is-outlined"
+									type="is-primary is-outlined"
 									class="w-210 block"
 								>
 									<span>Necotine patch/gum</span>
@@ -143,7 +144,7 @@
 									v-model="tobaccoUse"
 									:size="elementsHeight"
 									native-value="others"
-									type="is-outlined"
+									type="is-primary is-outlined"
 									class="w-210 block"
 								>
 									<span>Others</span>
@@ -169,7 +170,8 @@
 									:min="minDate"
 									:max="maxDate"
 									datePickerType="month"
-									customClassvalue="w-210"
+									class="w-210"
+									:customClassvalue="classes"
 								/>
 							</b-field>
 							
@@ -182,7 +184,7 @@
 						</b-field>
 						<b-field>
 							<NumberInput
-								customClassvalue="w-290"
+								customClassvalue="w-290 has-text-left has-text-primary"
 								addonLabelRight="per day"
 								inputPlaceholder="Figures Only"
 								minValue="0"
@@ -206,7 +208,8 @@
 									:min="minDate"
 									:max="maxDate"
 									datePickerType="month"
-									customClassvalue="w-210"
+									class="w-210"
+									:customClassvalue="classes"
 								/>
 							</b-field>
 						</b-field>
@@ -216,7 +219,7 @@
 						</template>
 						<b-field>
 							<NumberInput
-								customClassvalue="w-290"
+								customClassvalue="w-290 has-text-left has-text-primary"
 								addonLabelRight="per month"
 								inputPlaceholder="Figures Only"
 								minValue="0"
@@ -264,7 +267,7 @@
 					</b-field>
 					<b-field v-if="highBloodPressure === 'yes'">
 						<NumberInput
-							customClassvalue="w-290 p-60"
+							customClassvalue="w-290 p-60 has-text-primary has-txt-center"
 							addonLabelLeft="Systolic:"
 							addonLabelLeftClass="labelLeftClass"
 							addonLabelRight="mmHg"
@@ -276,7 +279,7 @@
 					</b-field>
 					<b-field v-if="highBloodPressure === 'yes'">
 						<NumberInput
-							customClassvalue="w-290 p-60"
+							customClassvalue="w-290 p-60 has-text-primary "
 							addonLabelLeft="Diastolic:"
 							addonLabelRight="mmHg"
 							inputPlaceholder="e.g. 80"
@@ -318,7 +321,7 @@
 					</b-field>
 					<b-field v-if="highCholesterol === 'yes'">
 						<NumberInput
-							customClassvalue="w-290 p-100"
+							customClassvalue="w-290 p-100 has-text-primary has-text-center"
 							addonLabelLeft="Cholesterol level:"
 							addonLabelLeftClass="labelLeftClass"
 							addonLabelRight="mg/dl"
@@ -330,7 +333,7 @@
 					</b-field>
 					<b-field v-if="highCholesterol === 'yes'">
 						<NumberInput
-							customClassvalue="w-290 p-120"
+							customClassvalue="w-290 p-120 has-text-primary has-text-center"
 							addonLabelLeft="Cholesterol / HDL ratio:"
 							addonLabelRight=""
 							inputPlaceholder="e.g. 3.5"
@@ -440,7 +443,7 @@
 					>
 						<b-field>
 							<NumberInput
-								customClassvalue="w-290"
+								customClassvalue="w-290 has-text-primary has-text-left"
 								addonLabelRight="ticket"
 								inputPlaceholder="e.g. 1"
 								minValue="0"
@@ -457,7 +460,7 @@
 								:min="minDate"
 								:max="maxDate"
 								datePickerType="month"
-								customClassvalue="w-210"
+								customClassvalue="w-210 has-text-primary has-text-left"
 							/>
 						</b-field>
 					</b-field>
@@ -496,7 +499,7 @@
 							</template>
 							<b-field>
 								<NumberInput
-									customClassvalue="w-290"
+									customClassvalue="w-290 has-text-primary has-text-left"
 									addonLabelRight="years"
 									inputPlaceholder="e.g. 65"
 									minValue="0"
@@ -551,10 +554,11 @@
 				),
 				labelPosition: 'on-border',
 				firstClass: 'has-text-primary',
+				secondClass:'has-text-secondary',
 				size: 'is-medium',
 				radioWeight: 'lbs',
 				familyMedical: 'no',
-				tobaccoUse: [],
+				tobaccoUse: ['others'],
 				highBloodPressure: 'no',
 				highCholesterol: 'no',
 				drivingHistory: 'no',
@@ -573,7 +577,7 @@
 		},
 	};
 </script>
-<style>
+<style type="scss">
 	.w-100 {
 		width: 100px !important;
 		max-width: 100px !important;
@@ -602,5 +606,12 @@
 	}
 	.p-120 input {
 		padding-left: 215px;
+		&:hover{
+			padding-left: 15px;
+		}
+		&:active{
+			padding-left: 15px;
+		}
+
 	}
 </style>
