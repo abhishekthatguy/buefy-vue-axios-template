@@ -57,11 +57,11 @@
 							</b-field>
 						</b-field>
 					</b-field>
-					<b-field type="is-danger" grouped is-3 label="Your Weight">
+					<b-field type="is-primary" grouped is-3 label="Your Weight">
 						<b-input
 							:size="elementsHeight"
 							:customClassvalue="classes"
-							class="w-120"
+							class="w-120 has-text-primary"
 							placeholder="e.g. 160"
 						></b-input>
 						<b-radio-button
@@ -321,7 +321,7 @@
 					</b-field>
 					<b-field v-if="highCholesterol === 'yes'">
 						<NumberInput
-							customClassvalue="w-290 p-100 has-text-primary has-text-center"
+							customClassvalue="w-300 p-100 has-text-primary has-text-center"
 							addonLabelLeft="Cholesterol level:"
 							addonLabelLeftClass="labelLeftClass"
 							addonLabelRight="mg/dl"
@@ -333,7 +333,7 @@
 					</b-field>
 					<b-field v-if="highCholesterol === 'yes'">
 						<NumberInput
-							customClassvalue="w-290 p-120 has-text-primary has-text-center"
+							customClassvalue="w-300 p-120 has-text-primary has-text-center"
 							addonLabelLeft="Cholesterol / HDL ratio:"
 							addonLabelRight=""
 							inputPlaceholder="e.g. 3.5"
@@ -606,12 +606,16 @@
 	}
 	.p-120 input {
 		padding-left: 215px;
-		&:hover{
+	}
+		/* .p-120 input:hover{
 			padding-left: 15px;
 		}
-		&:active{
+		.p-120 input:active{
 			padding-left: 15px;
-		}
-
+		} */
+	.w-300 {
+		width: 320px !important;
+		max-width: 320px !important;
+		text-align: center;
 	}
 </style>
