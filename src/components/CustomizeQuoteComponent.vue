@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
 	<section id="testcomponent" class="section">
-		<div class="container has-text-left">
+		<div class="container has-text-left-tablet">
 			<div class="column box">
 				<div class="column"></div>
 				<div class="column">
