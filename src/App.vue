@@ -12,7 +12,7 @@
 			</div> -->
 
 			<div
-				class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd"
+				class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd has-text-centered-mobile"
 			>
 				<div class="column"></div>
 				<div class="column is-three-quarters">
