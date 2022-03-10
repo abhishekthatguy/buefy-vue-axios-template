@@ -1,6 +1,6 @@
 <template>
-	<section>
-		<b-field :addons="false">
+	<section :style="mask.inputSize">
+		<b-field :addons="false" >
 			<b-input
 				:custom-class="customClassvalue"
 				:placeholder="placeHolder"
@@ -10,6 +10,7 @@
 				@input.native="onInput"
 				:size="size"
 				type="is-primary is-outlined"
+
 			>
 			</b-input>
 			<!-- <p><b>Formatted value (v-model)</b>: {{ value }}</p>
@@ -99,3 +100,8 @@
 		},
 	};
 </script>
+<style scoped>
+.w-400{
+	width:100px !important;
+}
+</style>

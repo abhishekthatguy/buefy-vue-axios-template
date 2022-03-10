@@ -9,7 +9,7 @@
 			</div>
 		</div>
 		<div
-			class="columns is-variable is-1-mobile is-0-tablet is-2-desktop is-8-widescreen is-2-fullhd"
+			class="columns is-variable is-1-mobile is-0-tablet is-2-desktop is-8-widescreen is-2-fullhd is-hidden"
 		>
 			<div class="column is-1-tablet"></div>
 			<div class="column">

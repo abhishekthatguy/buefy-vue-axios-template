@@ -55,8 +55,13 @@
 						</template>
 						<b-field grouped custom-class="classes">
 							<b-field>
-								<CustomInput :customClassvalue="classes" :mask="masks.monthField"
-								:inputAttr="inputAttr" :size="elementsHeight" placeHolder="MM/YYYY" />
+								<CustomInput
+									:customClassvalue="classes"
+									:mask="masks.monthField"
+									:inputAttr="inputAttr"
+									:size="elementsHeight"
+									placeHolder="MM/YYYY"
+								/>
 							</b-field>
 						</b-field>
 					</b-field>
@@ -69,8 +74,13 @@
 						</template>
 						<b-field grouped custom-class="classes">
 							<b-field>
-								<CustomInput :customClassvalue="classes" :mask="masks.dateField"
-								:inputAttr="inputAttr" :size="elementsHeight" placeHolder="DD/MM/YYYY" />
+								<CustomInput
+									:customClassvalue="classes"
+									:mask="masks.dateField"
+									:inputAttr="inputAttr"
+									:size="elementsHeight"
+									placeHolder="DD/MM/YYYY"
+								/>
 							</b-field>
 						</b-field>
 					</b-field>
@@ -78,18 +88,21 @@
 						<template #label>
 							Postal Code
 							<span class="has-text-primary is-underlined is-size-6"
-								>(Enter in format (A1A A1A )</span
+								>(Enter in format (A1A 1A1 )</span
 							>
 						</template>
-						<b-field grouped custom-class="classes is-hidden">
+						<b-field grouped custom-class="classes">
 							<b-field>
-								<CustomInput
-									:customClassvalue="classes"
-									:mask="masks.postalCode"
-									:inputAttr="inputAttr"
-									:size="elementsHeight"
-									placeHolder="A1A A1A"
-								/>
+								<b-input
+									:custom-class="classes"
+									placeholder="A1A 1A1"
+									v-model="value"
+									v-maska="'A#A #A#'"
+									@input.native="onInput"
+									:size="size"
+									type="is-primary is-outlined"
+								>
+								</b-input>
 							</b-field>
 						</b-field>
 					</b-field>
@@ -108,35 +121,32 @@
 							<b-field>
 								<CustomInput
 									:customClassvalue="classes"
-									:mask="inputMask"
+									custom-class="is-3"
+									:mask="masks.heightInFeet"
 									:inputAttr="inputAttr"
-									addonLabelRight="ft"
-									inputPlaceholder="e.g. 5"
-									minValue="0"
-									maxValue="10"
 									:size="elementsHeight"
-									inputValue="{}"
+									placeHolder="e.g. 5"
 								/>
 							</b-field>
 							<b-field>
 								<CustomInput
 									:customClassvalue="classes"
-									addonLabelRight="in"
-									inputPlaceholder="e.g. 9"
-									minValue="0"
-									maxValue="60"
+									:mask="masks.heightInInch"
+									:inputAttr="inputAttr"
 									:size="elementsHeight"
+									placeHolder="e.g. 8"
 								/>
 							</b-field>
 						</b-field>
 					</b-field>
 					<b-field type="is-primary" grouped is-3 label="Your Weight">
-						<b-input
-							:size="elementsHeight"
+						<CustomInput
 							:customClassvalue="classes"
-							class="w-120 has-text-primary"
-							placeholder="e.g. 160"
-						></b-input>
+							:mask="masks.weight"
+							:inputAttr="inputAttr"
+							:size="elementsHeight"
+							placeHolder="e.g. 120"
+						/>
 						<b-radio-button
 							v-model="radioWeight"
 							:size="elementsHeight"
@@ -236,15 +246,12 @@
 								</template>
 							</b-field>
 							<b-field>
-								<CustomDatePicker
-									:size="elementsHeight"
-									inputPlaceholder="MM/YYYY"
-									labelText="Date of Birth"
-									:min="minDate"
-									:max="maxDate"
-									datePickerType="month"
-									class="w-210"
+								<CustomInput
 									:customClassvalue="classes"
+									:mask="masks.lastUsedCigaretteMonth"
+									:inputAttr="inputAttr"
+									:size="elementsHeight"
+									placeHolder="MM/YYYY"
 								/>
 							</b-field>
 						</div>
@@ -256,12 +263,11 @@
 							</b-field>
 							<b-field>
 								<CustomInput
-									customClassvalue="w-290 has-text-left has-text-primary"
-									addonLabelRight="per day"
-									inputPlaceholder="Figures Only"
-									minValue="0"
-									maxValue="60"
+									:customClassvalue="classes"
+									:mask="masks.CigarettFigure"
+									:inputAttr="inputAttr"
 									:size="elementsHeight"
+									placeHolder="Figures Only"
 								/>
 							</b-field>
 						</div>
@@ -273,15 +279,12 @@
 								/></span>
 							</template>
 							<b-field>
-								<CustomDatePicker
-									:size="elementsHeight"
-									inputPlaceholder="MM/YYYY"
-									labelText="Date of Birth"
-									:min="minDate"
-									:max="maxDate"
-									datePickerType="month"
-									class="w-210"
+								<CustomInput
 									:customClassvalue="classes"
+									:mask="masks.lastUsedCigarMonth"
+									:inputAttr="inputAttr"
+									:size="elementsHeight"
+									placeHolder="MM/YYYY"
 								/>
 							</b-field>
 						</b-field>
@@ -291,12 +294,11 @@
 							</template>
 							<b-field>
 								<CustomInput
-									customClassvalue="w-290 has-text-left has-text-primary"
-									addonLabelRight="per month"
-									inputPlaceholder="Figures Only"
-									minValue="0"
-									maxValue="60"
+									:customClassvalue="classes"
+									:mask="masks.lastUsedCigarMonth"
+									:inputAttr="inputAttr"
 									:size="elementsHeight"
+									placeHolder="MM/YYYY"
 								/>
 							</b-field>
 						</b-field>
@@ -337,25 +339,20 @@
 					</b-field>
 					<b-field v-if="highBloodPressure === 'yes'">
 						<CustomInput
-							customClassvalue="w-290 p-60 has-text-primary has-txt-center"
-							addonLabelLeft="Systolic:"
-							addonLabelLeftClass="labelLeftClass"
-							addonLabelRight="mmHg"
-							inputPlaceholder="e.g. 120"
-							minValue="0"
-							maxValue="300"
+							:customClassvalue="classes"
+							:mask="masks.bloodPressureSys"
+							:inputAttr="inputAttr"
 							:size="elementsHeight"
+							placeHolder="e.g.120"
 						/>
 					</b-field>
 					<b-field v-if="highBloodPressure === 'yes'">
 						<CustomInput
-							customClassvalue="w-290 p-60 has-text-primary "
-							addonLabelLeft="Diastolic:"
-							addonLabelRight="mmHg"
-							inputPlaceholder="e.g. 80"
-							minValue="0"
-							maxValue="200"
+							:customClassvalue="classes"
+							:mask="masks.bloodPressureDis"
+							:inputAttr="inputAttr"
 							:size="elementsHeight"
+							placeHolder="e.g.80"
 						/>
 					</b-field>
 					<hr />
@@ -391,25 +388,20 @@
 					</b-field>
 					<b-field v-if="highCholesterol === 'yes'">
 						<CustomInput
-							customClassvalue="w-300 p-100 has-text-primary has-text-center"
-							addonLabelLeft="Cholesterol level:"
-							addonLabelLeftClass="labelLeftClass"
-							addonLabelRight="mg/dl"
-							inputPlaceholder="e.g. 200"
-							minValue="0"
-							maxValue="300"
+							:customClassvalue="classes"
+							:mask="masks.cholesterolLevel"
+							:inputAttr="inputAttr"
 							:size="elementsHeight"
+							placeHolder="e.g.200"
 						/>
 					</b-field>
 					<b-field v-if="highCholesterol === 'yes'">
 						<CustomInput
-							customClassvalue="w-300 p-120 has-text-primary has-text-center"
-							addonLabelLeft="Cholesterol / HDL ratio:"
-							addonLabelRight=""
-							inputPlaceholder="e.g. 3.5"
-							minValue="0"
-							maxValue="200"
+							:customClassvalue="classes"
+							:mask="masks.cholesterolRatio"
+							:inputAttr="inputAttr"
 							:size="elementsHeight"
+							placeHolder="e.g. 3.5"
 						/>
 					</b-field>
 					<hr />
@@ -460,15 +452,13 @@
 							v-if="moreThanOneAccident === 'yes'"
 							>in</b-button
 						>
-						<CustomDatePicker
+						<CustomInput
 							v-if="moreThanOneAccident === 'yes'"
+							:customClassvalue="classes"
+							:mask="masks.drivingHistoryAccident"
+							:inputAttr="inputAttr"
 							:size="elementsHeight"
-							inputPlaceholder="MM/YYYY"
-							labelText="Violation Month"
-							:min="minDate"
-							:max="maxDate"
-							datePickerType="month"
-							:customClassvalue="['w-210', 'is-align-content-flex-start']"
+							placeHolder="MM/YYYY"
 						/>
 
 						<b-radio-button
@@ -513,24 +503,21 @@
 					>
 						<b-field>
 							<CustomInput
-								customClassvalue="w-290 has-text-primary has-text-left"
-								addonLabelRight="ticket"
-								inputPlaceholder="e.g. 1"
-								minValue="0"
-								maxValue="300"
+								:customClassvalue="classes"
+								:mask="masks.movingViolations"
+								:inputAttr="inputAttr"
 								:size="elementsHeight"
+								placeHolder="e.g.1"
 							/>
 						</b-field>
 						<b-button type="is-ghost has-text-grey" :size="size">in</b-button>
 						<b-field>
-							<CustomDatePicker
+							<CustomInput
+								:customClassvalue="classes"
+								:mask="masks.movingViolationsDate"
+								:inputAttr="inputAttr"
 								:size="elementsHeight"
-								inputPlaceholder="MM/YYYY"
-								labelText="Violation Month"
-								:min="minDate"
-								:max="maxDate"
-								datePickerType="month"
-								customClassvalue="w-210 has-text-primary has-text-left"
+								placeHolder="MM/YYYY"
 							/>
 						</b-field>
 					</b-field>
@@ -569,12 +556,11 @@
 							</template>
 							<b-field>
 								<CustomInput
-									customClassvalue="w-290 has-text-primary has-text-left"
-									addonLabelRight="years"
-									inputPlaceholder="e.g. 65"
-									minValue="0"
-									maxValue="100"
+									:customClassvalue="classes"
+									:mask="masks.familyMedicalHistory"
+									:inputAttr="inputAttr"
 									:size="elementsHeight"
+									placeHolder="e.g.65"
 								/>
 							</b-field>
 						</b-field>
@@ -590,12 +576,13 @@
 </template>
 
 <script>
-	import CustomDatePicker from '../CustomDatePicker.vue';
+	// import CustomDatePicker from '../CustomDatePicker.vue';
 	import CustomInput from '../CustomInput.vue';
 	// import CustomRadioButton from '../CustomRadioButton.vue';
 	// import CustomRadioButtonSmoker from '../CustomRadioButtonSmoker.vue';
 	import CustomTitleLight from '../CustomTitleLight.vue';
 	// import NumberInput from '../NumberInput.vue';
+	import { maska } from 'maska';
 	export default {
 		name: 'CriticalIllness',
 		props: {
@@ -603,12 +590,13 @@
 		},
 		components: {
 			CustomInput,
-			CustomDatePicker,
+			// CustomDatePicker,
 			// CustomRadioButton,
 			// CustomRadioButtonSmoker,
 			// NumberInput,
 			CustomTitleLight,
 		},
+		directives: { maska },
 		data() {
 			const today = new Date();
 			return {
@@ -693,10 +681,10 @@
 					},
 					postalCode: {
 						delimiters: ['  '],
-						blocks: [3,3],
+						blocks: [3, 3],
 						uppercase: true,
 						formatted: true,
-						pattern: /[0-9]/ ,
+						pattern: /[0-9]/,
 					},
 					custom: {
 						delimiters: ['-', '-', '-'],
@@ -706,12 +694,108 @@
 						uppercase: true,
 						signBeforePrefix: true,
 					},
+					heightInFeet: {
+						delimiters: [''],
+						blocks: [4],
+						numericOnly: true,
+						prefix: 'ft',
+						tailPrefix: true,
+						inputSize: 'width:150px',
+					},
+					heightInInch: {
+						delimiters: [''],
+						blocks: [2],
+						numericOnly: true,
+						prefix: 'in',
+						tailPrefix: true,
+						inputSize: 'width:150px',
+					},
+					weight: {
+						delimiters: [''],
+						blocks: [4],
+						numericOnly: true,
+						inputSize: 'width:150px',
+					},
+					lastUsedCigaretteMonth: {
+						date: true,
+						delimiter: '/',
+						datePattern: ['m', 'Y'],
+						inputSize: 'width:170px',
+						dateMin: '2000-01-01',
+						dateMax: this.today,
+					},
+					CigarettFigure: {
+						inputSize: 'width:330px',
+					},
+					lastUsedCigarMonth: {
+						date: true,
+						delimiter: '/',
+						datePattern: ['m', 'Y'],
+						inputSize: 'width:170px',
+					},
+					CigarFigure: {
+						inputSize: 'width:330px',
+					},
+					bloodPressureSys: {
+						delimiters: [': ', ''],
+						blocks: [8, 3],
+						numericOnly: true,
+						prefix: 'Systolic',
+						// tailPrefix: true,
+						inputSize: 'width:330px',
+					},
+					bloodPressureDis: {
+						delimiters: [': ', ''],
+						blocks: [8, 3],
+						numericOnly: true,
+						prefix: 'Distolic',
+						// tailPrefix: true,
+						inputSize: 'width:330px',
+					},
+					cholesterolLevel: {
+						delimiters: [' : ', ''],
+						blocks: [16, 8],
+						numericOnly: true,
+						prefix: 'Cholestrol-level',
+						// tailPrefix: true,
+						inputSize: 'width:330px',
+					},
+					cholesterolRatio: {
+						delimiters: [': ', ''],
+						blocks: [16, 3],
+						numericOnly: true,
+						prefix: 'Cholestrol-Ratio',
+						// tailPrefix: true,
+						inputSize: 'width:330px',
+					},
+					drivingHistoryAccident: {
+						date: true,
+						delimiter: '/',
+						datePattern: ['m', 'Y'],
+						inputSize: 'width:170px',
+					},
+					movingViolations: {
+						blocks: [5],
+						numericOnly: true,
+						inputSize: 'width:330px',
+					},
+					movingViolationsDate: {
+						date: true,
+						delimiter: '/',
+						datePattern: ['m', 'Y'],
+						inputSize: 'width:170px',
+					},
+					familyMedicalHistory: {
+						blocks: [1],
+						numericOnly: true,
+						inputSize: 'width:330px',
+					},
 				},
 			};
 		},
 		computed: {
 			classes() {
-				return `${this.firstClass} ${this.secondClass}`;
+				return `${this.firstClass} ${this.secondClass} is-1`;
 			},
 			elementsHeight() {
 				return `${this.size}`;
