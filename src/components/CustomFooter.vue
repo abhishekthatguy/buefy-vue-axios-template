@@ -1,6 +1,6 @@
 /* eslint-disable */
 <template>
-    <footer id="footer" class="footer has-background-primary-light">
+    <footer id="footer" class="footer has-background-primary-light" fixed-bottom>
         <div class="content has-text-centered">
             <p class="has-text-primary is-size-7">
                 <i class="fas fa-copyright"></i> <b>{{year}}, policyadvisor</b>

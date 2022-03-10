@@ -1,4 +1,3 @@
-/* eslint-disable */
 <template>
 	<section id="testcomponent" class="section">
 		<div class="container has-text-left-tablet">
@@ -25,6 +24,78 @@
 							>
 						</p>
 					</div>
+
+					<!-- start here -->
+					<CustomTitleLight titleText="Add on Component" />
+					<b-field class="heightColumn">
+						<template #label>
+							Enter Your Phone
+							<span class="has-text-primary is-underlined is-size-6"
+								>(Enter in format (345) 666-6666 )</span
+							>
+						</template>
+						<b-field grouped custom-class="classes">
+							<b-field>
+								<CustomInput
+									:customClassvalue="classes"
+									:mask="inputMaskPhone"
+									:inputAttr="inputAttr"
+									:size="elementsHeight"
+									placeHolder="Phone"
+								/>
+							</b-field>
+						</b-field>
+					</b-field>
+					<b-field class="heightColumn">
+						<template #label>
+							Born on
+							<span class="has-text-primary is-underlined is-size-6"
+								>(Enter in format (dd-mm-yyyy )</span
+							>
+						</template>
+						<b-field grouped custom-class="classes">
+							<b-field>
+								<CustomInput :customClassvalue="classes" :mask="masks.monthField"
+								:inputAttr="inputAttr" :size="elementsHeight" placeHolder="MM/YYYY" />
+							</b-field>
+						</b-field>
+					</b-field>
+					<b-field class="heightColumn">
+						<template #label>
+							Last Tobacco Used
+							<span class="has-text-primary is-underlined is-size-6"
+								>(Enter in format (mm-yyyy )</span
+							>
+						</template>
+						<b-field grouped custom-class="classes">
+							<b-field>
+								<CustomInput :customClassvalue="classes" :mask="masks.dateField"
+								:inputAttr="inputAttr" :size="elementsHeight" placeHolder="DD/MM/YYYY" />
+							</b-field>
+						</b-field>
+					</b-field>
+					<b-field class="heightColumn">
+						<template #label>
+							Postal Code
+							<span class="has-text-primary is-underlined is-size-6"
+								>(Enter in format (A1A A1A )</span
+							>
+						</template>
+						<b-field grouped custom-class="classes is-hidden">
+							<b-field>
+								<CustomInput
+									:customClassvalue="classes"
+									:mask="masks.postalCode"
+									:inputAttr="inputAttr"
+									:size="elementsHeight"
+									placeHolder="A1A A1A"
+								/>
+							</b-field>
+						</b-field>
+					</b-field>
+					<hr />
+					<!-- temp code end  -->
+
 					<CustomTitleLight titleText="Your Build" />
 					<b-field class="heightColumn">
 						<template #label>
@@ -35,8 +106,10 @@
 						</template>
 						<b-field grouped custom-class="classes">
 							<b-field>
-								<NumberInput
+								<CustomInput
 									:customClassvalue="classes"
+									:mask="inputMask"
+									:inputAttr="inputAttr"
 									addonLabelRight="ft"
 									inputPlaceholder="e.g. 5"
 									minValue="0"
@@ -46,7 +119,7 @@
 								/>
 							</b-field>
 							<b-field>
-								<NumberInput
+								<CustomInput
 									:customClassvalue="classes"
 									addonLabelRight="in"
 									inputPlaceholder="e.g. 9"
@@ -182,7 +255,7 @@
 								</template>
 							</b-field>
 							<b-field>
-								<NumberInput
+								<CustomInput
 									customClassvalue="w-290 has-text-left has-text-primary"
 									addonLabelRight="per day"
 									inputPlaceholder="Figures Only"
@@ -217,7 +290,7 @@
 								On average, how many cigars per day do/did you smoke?
 							</template>
 							<b-field>
-								<NumberInput
+								<CustomInput
 									customClassvalue="w-290 has-text-left has-text-primary"
 									addonLabelRight="per month"
 									inputPlaceholder="Figures Only"
@@ -263,7 +336,7 @@
 						</template>
 					</b-field>
 					<b-field v-if="highBloodPressure === 'yes'">
-						<NumberInput
+						<CustomInput
 							customClassvalue="w-290 p-60 has-text-primary has-txt-center"
 							addonLabelLeft="Systolic:"
 							addonLabelLeftClass="labelLeftClass"
@@ -275,7 +348,7 @@
 						/>
 					</b-field>
 					<b-field v-if="highBloodPressure === 'yes'">
-						<NumberInput
+						<CustomInput
 							customClassvalue="w-290 p-60 has-text-primary "
 							addonLabelLeft="Diastolic:"
 							addonLabelRight="mmHg"
@@ -317,7 +390,7 @@
 						</template>
 					</b-field>
 					<b-field v-if="highCholesterol === 'yes'">
-						<NumberInput
+						<CustomInput
 							customClassvalue="w-300 p-100 has-text-primary has-text-center"
 							addonLabelLeft="Cholesterol level:"
 							addonLabelLeftClass="labelLeftClass"
@@ -329,7 +402,7 @@
 						/>
 					</b-field>
 					<b-field v-if="highCholesterol === 'yes'">
-						<NumberInput
+						<CustomInput
 							customClassvalue="w-300 p-120 has-text-primary has-text-center"
 							addonLabelLeft="Cholesterol / HDL ratio:"
 							addonLabelRight=""
@@ -439,7 +512,7 @@
 						v-if="movingViolations === 'yes'"
 					>
 						<b-field>
-							<NumberInput
+							<CustomInput
 								customClassvalue="w-290 has-text-primary has-text-left"
 								addonLabelRight="ticket"
 								inputPlaceholder="e.g. 1"
@@ -495,7 +568,7 @@
 								At what age was your brother diagnosed?
 							</template>
 							<b-field>
-								<NumberInput
+								<CustomInput
 									customClassvalue="w-290 has-text-primary has-text-left"
 									addonLabelRight="years"
 									inputPlaceholder="e.g. 65"
@@ -511,34 +584,34 @@
 						<b-button type="is-primary" :size="size">Next Step</b-button>
 					</div>
 				</div>
-				<div class="column"></div>
 			</div>
 		</div>
 	</section>
 </template>
-<script>
-	// import CustomInput from './CustomInput.vue';
-	import NumberInput from './NumberInput.vue';
-	import CustomDatePicker from './CustomDatePicker.vue';
-	import CustomTitleLight from './CustomTitleLight.vue';
 
+<script>
+	import CustomDatePicker from '../CustomDatePicker.vue';
+	import CustomInput from '../CustomInput.vue';
+	// import CustomRadioButton from '../CustomRadioButton.vue';
+	// import CustomRadioButtonSmoker from '../CustomRadioButtonSmoker.vue';
+	import CustomTitleLight from '../CustomTitleLight.vue';
+	// import NumberInput from '../NumberInput.vue';
 	export default {
-		name: 'CustomizeQuoteComponent',
+		name: 'CriticalIllness',
 		props: {
-			year: String,
+			msg: String,
 		},
 		components: {
-			// CustomInput,
-			NumberInput,
+			CustomInput,
 			CustomDatePicker,
+			// CustomRadioButton,
+			// CustomRadioButtonSmoker,
+			// NumberInput,
 			CustomTitleLight,
 		},
 		data() {
 			const today = new Date();
-
 			return {
-				// date: new Date(),
-				date: '',
 				minDate: new Date(
 					today.getFullYear() - 40,
 					today.getMonth(),
@@ -549,6 +622,16 @@
 					today.getMonth(),
 					today.getDate(),
 				),
+				radioObj: {
+					labels: ['Male', 'Female', 'Others'],
+					labelsIcon: ['tick', 'cross'],
+				},
+				coverageYears: [
+					{ id: 1, name: '10 years' },
+					{ id: 2, name: '15 years' },
+					{ id: 3, name: '20 years' },
+					{ id: 4, name: '30 years' },
+				],
 				labelPosition: 'on-border',
 				firstClass: 'has-text-primary',
 				secondClass: 'has-text-secondary',
@@ -562,6 +645,68 @@
 				familyMedicalHistory: 'no',
 				movingViolations: 'no',
 				moreThanOneAccident: 'no',
+				inputModel: '',
+				radioButton: '',
+				rightIcon: 'mail',
+				value: '',
+				rawValue: '',
+				inputMask: {
+					numeral: true,
+					numeralPositiveOnly: true,
+					prefix: ' ft',
+					rawValueTrimPrefix: true,
+				},
+				inputMaskPhone: {
+					blocks: [4, 3, 4],
+					delimiters: [') -', '-', '-'],
+					numericOnly: true,
+					prefix: '(',
+					noImmediatePrefix: true,
+				},
+				inputAttr: {
+					placeHolder: 'e.g.5',
+				},
+				masks: {
+					creditCard: {
+						creditCard: true,
+						// onValueChanged: function (e) {
+						// 	e.target = { value: '5100-1234', rawValue: '51001234' }
+						// },
+					},
+					dateField: {
+						date: true,
+						delimiter: '/',
+						datePattern: ['d', 'm', 'Y'],
+					},
+					monthField: {
+						date: true,
+						delimiter: '/',
+						datePattern: ['m', 'Y'],
+					},
+					phone: { phone: true, phoneRegionCode: '{country}' },
+					numeral: {
+						numeral: true,
+						numeralThousandsGroupStyle: 'thousand',
+						prefix: '$ Prefix ',
+						signBeforePrefix: true,
+						tailPrefix: true,
+					},
+					postalCode: {
+						delimiters: ['  '],
+						blocks: [3,3],
+						uppercase: true,
+						formatted: true,
+						pattern: /[0-9]/ ,
+					},
+					custom: {
+						delimiters: ['-', '-', '-'],
+						blocks: [3, 3, 4],
+						numericOnly: true,
+						prefix: 'PREFIX',
+						uppercase: true,
+						signBeforePrefix: true,
+					},
+				},
 			};
 		},
 		computed: {
@@ -572,9 +717,20 @@
 				return `${this.size}`;
 			},
 		},
+		methods: {
+			onInput(event) {
+				this.rawValue = event.target._vCleave.getRawValue();
+				this.value = event.target._vCleave.getFormattedValue();
+			},
+		},
 	};
 </script>
-<style type="scss">
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+	.card {
+		margin: 40px 0px;
+	}
 	.w-100 {
 		width: 100px !important;
 		max-width: 100px !important;
