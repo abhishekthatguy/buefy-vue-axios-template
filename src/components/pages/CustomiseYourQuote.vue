@@ -27,6 +27,25 @@
 
 					<!-- start here -->
 					<CustomTitleLight titleText="Add on Component" />
+					<!-- <b-field class="heightColumn">
+						<template #label>
+							Coverage Amount
+							<span class="has-text-primary is-underlined is-size-6"
+								>(With Thousands Separator & prefix)</span
+							>
+						</template>
+						<b-field grouped custom-class="classes">
+							<b-field>
+								<CustomInput
+									:customClassvalue="classes"
+									data-mask='["# cm", "#.# cm", "#.## cm"]'
+									:inputAttr="inputAttr"
+									:size="elementsHeight"
+									placeHolder="Coverage Amount"
+								/>
+							</b-field>
+						</b-field>
+					</b-field> -->
 					<b-field class="heightColumn">
 						<template #label>
 							Enter Your Phone
@@ -101,6 +120,50 @@
 									@input.native="onInput"
 									:size="size"
 									type="is-primary is-outlined"
+								>
+								</b-input>
+							</b-field>
+						</b-field>
+					</b-field>
+					<b-field class="heightColumn">
+						<template #label>
+							Coverage Amount
+							<span class="has-text-primary is-underlined is-size-6"
+								>(With Thousands Separator )</span
+							>
+						</template>
+						<b-field grouped custom-class="classes">
+							<b-field>
+								<b-input
+									:custom-class="['has-text-primary', 'has-text-right-hover']"
+									placeholder="Coverage Amount"
+									v-model="amount"
+									v-maska="'$ ##,##,###'"
+									@input.native="onInput"
+									:size="size"
+									type="is-primary is-outlined"
+								>
+								</b-input>
+							</b-field>
+						</b-field>
+					</b-field>
+					<b-field class="heightColumn">
+						<template #label>
+							Password
+							<span class="has-text-primary is-underlined is-size-6"
+								>(Enter Your password )</span
+							>
+						</template>
+						<b-field grouped custom-class="classes">
+							<b-field>
+								<b-input
+									:custom-class="['has-text-primary', 'has-text-left']"
+									placeholder="Password"
+									v-model="password"
+									@input.native="onInput"
+									:size="size"
+									type="password"
+									password-reveal
 								>
 								</b-input>
 							</b-field>
@@ -679,6 +742,12 @@
 						signBeforePrefix: true,
 						tailPrefix: true,
 					},
+					amount: {
+						numeralOnly: true,
+						numeralThousandsGroupStyle: 'thousand',
+						prefix: '$',
+						delimiter: ',',
+					},
 					postalCode: {
 						delimiters: ['  '],
 						blocks: [3, 3],
@@ -735,6 +804,8 @@
 					},
 					CigarFigure: {
 						inputSize: 'width:330px',
+						blocks: [7],
+						numericOnly: true,
 					},
 					bloodPressureSys: {
 						delimiters: [': ', ''],
