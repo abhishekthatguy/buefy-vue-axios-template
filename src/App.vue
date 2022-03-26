@@ -20,14 +20,14 @@
 			class="columns is-variable is-1-mobile is-0-tablet is-9-desktop is-8-widescreen is-2-fullhd"
 		>
 			<div class="column is-1-tablet"></div>
-			<div class="column is-9-desktop">
+			<div class="column is-10-desktop">
 				<!-- <CriticalIllness /> -->
 				<!-- <CustomizeQuoteComponent /> -->
 				<CustomiseYourQuote />
 
 				<!-- <TestComponent /> -->
 			</div>
-			<div class="column"><CustomInputTest /></div>
+			<!-- <div class="column"><CustomInputTest /></div> -->
 		</div>
 		<div class="columns is-full">
 			<div class="column">
@@ -45,7 +45,7 @@
 	// import TestComponent from './components/TestComponent.vue';
 	// import CustomizeQuoteComponent from './components/CustomizeQuoteComponent.vue';
 	import CustomiseYourQuote from './components/pages/CustomiseYourQuote.vue';
-	import CustomInputTest from './components/CustomInputTest.vue';
+	// import CustomInputTest from './components/CustomInputTest.vue';
 	export default {
 		name: 'App',
 		components: {
@@ -56,7 +56,7 @@
 			// TestComponent,
 			// CustomizeQuoteComponent,
 			CustomiseYourQuote,
-			CustomInputTest,
+			// CustomInputTest,
 		},
 		data() {
 			return {

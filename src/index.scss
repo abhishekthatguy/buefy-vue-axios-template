@@ -8,6 +8,7 @@ $primary-dark: findDarkColor($primary);
 $primary-invert: findColorInvert($primary);
 $twitter: #17b3e4;
 $twitter-invert: findColorInvert($twitter);
+$input-color:findColorInvert($primary);
 
 // Lists and maps
 $custom-colors: null !default;

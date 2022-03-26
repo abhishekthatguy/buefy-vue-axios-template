@@ -27,145 +27,130 @@
 
 					<!-- start here -->
 					<CustomTitleLight titleText="Add on Component" />
-					<!-- <b-field class="heightColumn">
-						<template #label>
-							Coverage Amount
-							<span class="has-text-primary is-underlined is-size-6"
-								>(With Thousands Separator & prefix)</span
-							>
-						</template>
-						<b-field grouped custom-class="classes">
-							<b-field>
-								<CustomInput
-									:customClassvalue="classes"
-									data-mask='["# cm", "#.# cm", "#.## cm"]'
-									:inputAttr="inputAttr"
-									:size="elementsHeight"
-									placeHolder="Coverage Amount"
-								/>
-							</b-field>
-						</b-field>
-					</b-field> -->
-					<b-field class="heightColumn">
-						<template #label>
-							Enter Your Phone
-							<span class="has-text-primary is-underlined is-size-6"
-								>(Enter in format (345) 666-6666 )</span
-							>
-						</template>
-						<b-field grouped custom-class="classes">
-							<b-field>
-								<CustomInput
-									:customClassvalue="classes"
-									:mask="inputMaskPhone"
-									:inputAttr="inputAttr"
-									:size="elementsHeight"
-									placeHolder="Phone"
-								/>
-							</b-field>
-						</b-field>
-					</b-field>
-					<b-field class="heightColumn">
-						<template #label>
-							Born on
-							<span class="has-text-primary is-underlined is-size-6"
-								>(Enter in format (dd-mm-yyyy )</span
-							>
-						</template>
-						<b-field grouped custom-class="classes">
-							<b-field>
-								<CustomInput
-									:customClassvalue="classes"
-									:mask="masks.monthField"
-									:inputAttr="inputAttr"
-									:size="elementsHeight"
-									placeHolder="MM/YYYY"
-								/>
-							</b-field>
-						</b-field>
-					</b-field>
-					<b-field class="heightColumn">
-						<template #label>
-							Last Tobacco Used
-							<span class="has-text-primary is-underlined is-size-6"
-								>(Enter in format (mm-yyyy )</span
-							>
-						</template>
-						<b-field grouped custom-class="classes">
-							<b-field>
-								<CustomInput
-									:customClassvalue="classes"
-									:mask="masks.dateField"
-									:inputAttr="inputAttr"
-									:size="elementsHeight"
-									placeHolder="DD/MM/YYYY"
-								/>
-							</b-field>
-						</b-field>
-					</b-field>
-					<b-field class="heightColumn">
-						<template #label>
-							Postal Code
-							<span class="has-text-primary is-underlined is-size-6"
-								>(Enter in format (A1A 1A1 )</span
-							>
-						</template>
-						<b-field grouped custom-class="classes">
-							<b-field>
-								<b-input
-									:custom-class="classes"
-									placeholder="A1A 1A1"
-									v-model="value"
-									v-maska="'A#A #A#'"
-									@input.native="onInput"
-									:size="size"
-									type="is-primary is-outlined"
+					<b-field grouped>
+						<b-field class="heightColumn">
+							<template #label>
+								Last Tobacco Used
+								<span class="has-text-primary is-underlined is-size-6"
+									>(Enter in format (mm-yyyy )</span
 								>
-								</b-input>
+							</template>
+							<b-field grouped custom-class="classes">
+								<b-field>
+									<CustomInput
+										:customClassvalue="classes"
+										:mask="masks.monthField"
+										:inputAttr="inputAttr"
+										:size="elementsHeight"
+										placeHolder="`MM/YYYY`"
+									/>
+								</b-field>
+							</b-field>
+						</b-field>
+						<b-field class="heightColumn">
+							<template #label>
+								Born on
+								<span class="has-text-primary is-underlined is-size-6"
+									>(Enter in format (dd-mm-yyyy )</span
+								>
+							</template>
+							<b-field grouped custom-class="classes">
+								<b-field>
+									<CustomInput
+										:customClassvalue="classes"
+										:mask="masks.dateField"
+										:inputAttr="inputAttr"
+										:size="elementsHeight"
+										placeHolder="`DD/MM/YYYY`"
+									/>
+								</b-field>
+							</b-field>
+						</b-field>
+						<b-field class="heightColumn">
+							<template #label>
+								Password
+								<span class="has-text-primary is-underlined is-size-6"
+									>(Enter Your password )</span
+								>
+							</template>
+							<b-field grouped custom-class="classes">
+								<b-field>
+									<b-input
+										:custom-class="['has-text-primary', 'has-text-left']"
+										placeholder="Password"
+										v-model="password"
+										@input.native="onInput"
+										:size="size"
+										type="password"
+										password-reveal
+									>
+									</b-input>
+								</b-field>
 							</b-field>
 						</b-field>
 					</b-field>
-					<b-field class="heightColumn">
-						<template #label>
-							Coverage Amount
-							<span class="has-text-primary is-underlined is-size-6"
-								>(With Thousands Separator )</span
-							>
-						</template>
-						<b-field grouped custom-class="classes">
-							<b-field>
-								<b-input
-									:custom-class="['has-text-primary', 'has-text-right-hover']"
-									placeholder="Coverage Amount"
-									v-model="amount"
-									v-maska="'$ ##,##,###'"
-									@input.native="onInput"
-									:size="size"
-									type="is-primary is-outlined"
+					<b-field grouped>
+						<b-field class="heightColumn">
+							<template #label>
+								Coverage Amount
+								<span class="has-text-primary is-underlined is-size-6"
+									>(With Thousands Separator )</span
 								>
-								</b-input>
+							</template>
+							<b-field grouped custom-class="classes">
+								<b-field>
+									<b-input
+										:custom-class="['has-text-primary', 'has-text-right-hover']"
+										placeholder="`Coverage Amount`"
+										v-model="amount"
+										v-maska="'$ ##,##,###'"
+										@input.native="onInput"
+										:size="size"
+										type="is-primary is-outlined"
+									>
+									</b-input>
+								</b-field>
 							</b-field>
 						</b-field>
-					</b-field>
-					<b-field class="heightColumn">
-						<template #label>
-							Password
-							<span class="has-text-primary is-underlined is-size-6"
-								>(Enter Your password )</span
-							>
-						</template>
-						<b-field grouped custom-class="classes">
-							<b-field>
-								<b-input
-									:custom-class="['has-text-primary', 'has-text-left']"
-									placeholder="Password"
-									v-model="password"
-									@input.native="onInput"
-									:size="size"
-									type="password"
-									password-reveal
+						<b-field class="heightColumn">
+							<template #label>
+								Enter Your Phone
+								<span class="has-text-primary is-underlined is-size-6"
+									>(Enter in format (345) 666-6666 )</span
 								>
-								</b-input>
+							</template>
+							<b-field grouped custom-class="classes">
+								<b-field>
+									<CustomInput
+										:customClassvalue="classes"
+										:mask="inputMaskPhone"
+										:inputAttr="inputAttr"
+										:size="elementsHeight"
+										placeHolder="`Phone`"
+									/>
+								</b-field>
+							</b-field>
+						</b-field>
+						<b-field class="heightColumn">
+							<template #label>
+								Postal Code
+								<span class="has-text-primary is-underlined is-size-6"
+									>(Enter in format (A1A 1A1 )</span
+								>
+							</template>
+							<b-field grouped custom-class="classes">
+								<b-field>
+									<b-input
+										:custom-class="classes"
+										placeholder="A1A 1A1"
+										v-model="value"
+										v-maska="'A#A #A#'"
+										@input.native="onInput"
+										:size="size"
+										type="is-primary is-outlined"
+									>
+									</b-input>
+								</b-field>
 							</b-field>
 						</b-field>
 					</b-field>
@@ -188,7 +173,7 @@
 									:mask="masks.heightInFeet"
 									:inputAttr="inputAttr"
 									:size="elementsHeight"
-									placeHolder="e.g. 5"
+									placeHolder="`e.g. 5`"
 								/>
 							</b-field>
 							<b-field>
@@ -197,7 +182,7 @@
 									:mask="masks.heightInInch"
 									:inputAttr="inputAttr"
 									:size="elementsHeight"
-									placeHolder="e.g. 8"
+									placeHolder="`e.g. 8`"
 								/>
 							</b-field>
 						</b-field>
@@ -208,7 +193,7 @@
 							:mask="masks.weight"
 							:inputAttr="inputAttr"
 							:size="elementsHeight"
-							placeHolder="e.g. 120"
+							placeHolder="`e.g. 120`"
 						/>
 						<b-radio-button
 							v-model="radioWeight"
@@ -314,7 +299,7 @@
 									:mask="masks.lastUsedCigaretteMonth"
 									:inputAttr="inputAttr"
 									:size="elementsHeight"
-									placeHolder="MM/YYYY"
+									placeHolder="`MM/YYYY`"
 								/>
 							</b-field>
 						</div>
@@ -330,7 +315,7 @@
 									:mask="masks.CigarettFigure"
 									:inputAttr="inputAttr"
 									:size="elementsHeight"
-									placeHolder="Figures Only"
+									placeHolder="`Figures Only`"
 								/>
 							</b-field>
 						</div>
@@ -347,7 +332,7 @@
 									:mask="masks.lastUsedCigarMonth"
 									:inputAttr="inputAttr"
 									:size="elementsHeight"
-									placeHolder="MM/YYYY"
+									placeHolder="`MM/YYYY`"
 								/>
 							</b-field>
 						</b-field>
@@ -361,7 +346,7 @@
 									:mask="masks.lastUsedCigarMonth"
 									:inputAttr="inputAttr"
 									:size="elementsHeight"
-									placeHolder="MM/YYYY"
+									placeHolder="`MM/YYYY`"
 								/>
 							</b-field>
 						</b-field>
@@ -406,7 +391,7 @@
 							:mask="masks.bloodPressureSys"
 							:inputAttr="inputAttr"
 							:size="elementsHeight"
-							placeHolder="e.g.120"
+							placeHolder="`e.g.120`"
 						/>
 					</b-field>
 					<b-field v-if="highBloodPressure === 'yes'">
@@ -415,7 +400,7 @@
 							:mask="masks.bloodPressureDis"
 							:inputAttr="inputAttr"
 							:size="elementsHeight"
-							placeHolder="e.g.80"
+							placeHolder="`e.g.80`"
 						/>
 					</b-field>
 					<hr />
@@ -455,7 +440,7 @@
 							:mask="masks.cholesterolLevel"
 							:inputAttr="inputAttr"
 							:size="elementsHeight"
-							placeHolder="e.g.200"
+							placeHolder="`e.g.200`"
 						/>
 					</b-field>
 					<b-field v-if="highCholesterol === 'yes'">
@@ -464,7 +449,7 @@
 							:mask="masks.cholesterolRatio"
 							:inputAttr="inputAttr"
 							:size="elementsHeight"
-							placeHolder="e.g. 3.5"
+							placeHolder="`e.g. 3.5`"
 						/>
 					</b-field>
 					<hr />
@@ -521,7 +506,7 @@
 							:mask="masks.drivingHistoryAccident"
 							:inputAttr="inputAttr"
 							:size="elementsHeight"
-							placeHolder="MM/YYYY"
+							placeHolder="`MM/YYYY`"
 						/>
 
 						<b-radio-button
@@ -570,7 +555,7 @@
 								:mask="masks.movingViolations"
 								:inputAttr="inputAttr"
 								:size="elementsHeight"
-								placeHolder="e.g.1"
+								placeHolder="`e.g.1`"
 							/>
 						</b-field>
 						<b-button type="is-ghost has-text-grey" :size="size">in</b-button>
@@ -580,7 +565,7 @@
 								:mask="masks.movingViolationsDate"
 								:inputAttr="inputAttr"
 								:size="elementsHeight"
-								placeHolder="MM/YYYY"
+								placeHolder="`MM/YYYY`"
 							/>
 						</b-field>
 					</b-field>
@@ -623,7 +608,7 @@
 									:mask="masks.familyMedicalHistory"
 									:inputAttr="inputAttr"
 									:size="elementsHeight"
-									placeHolder="e.g.65"
+									placeHolder="`e.g. 65`"
 								/>
 							</b-field>
 						</b-field>
@@ -765,11 +750,13 @@
 					},
 					heightInFeet: {
 						delimiters: [''],
-						blocks: [4],
-						numericOnly: true,
+						blocks: [9],
+						numeric: true,
 						prefix: 'ft',
-						tailPrefix: true,
+						tailPrefix: false,
 						inputSize: 'width:150px',
+						rightIcon:'lock',
+						leftIcon:'lock'
 					},
 					heightInInch: {
 						delimiters: [''],

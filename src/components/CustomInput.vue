@@ -1,6 +1,7 @@
 <template>
-	<section :style="mask.inputSize">
-		<b-field :addons="false" >
+	<section :style="mask?mask.inputSize:''">
+	<!-- <section> -->
+		<b-field :addons="false">
 			<b-input
 				:custom-class="customClassvalue"
 				:placeholder="placeHolder"
@@ -10,13 +11,30 @@
 				@input.native="onInput"
 				:size="size"
 				type="is-primary is-outlined"
-
+				:min="minValue"
+				:max="maxValue"
+				:icon-right="mask.iconRight"
+				:icon="mask.leftIcon"
 			>
 			</b-input>
-			<!-- <p><b>Formatted value (v-model)</b>: {{ value }}</p>
+			</b-field>
+
+			<!-- <div class="field">
+  <p class="control has-icons-left has-icons-right has-text-primary">
+    <input class="input is-outlined is-medium is-primary" type="number" placeholder="`${placeHolder}`" :size="size">
+    <span class="icon is-small is-left">
+      <i :class="`fas fa-${mask.leftIcon}`"> {{mask.leftIcon}}</i>
+    </span>
+    <span class="icon is-small is-right">
+      <i :class="`fas fa-${mask.leftIcon}`">{{mask.leftIcon}}</i>
+    </span>
+  </p>
+</div> -->
+		<!-- <p><b>Formatted value (v-model)</b>: {{ value }}</p>
 			<p><b>Raw value</b>: {{ rawValue }}</p> -->
-		</b-field>
-		<p>{{value}}</p>
+		
+		<!-- <p>{{value}}</p> -->
+	
 	</section>
 </template>
 
@@ -52,11 +70,13 @@
 			size: String,
 			universalClass: String,
 			inputAttr: Object,
-			placeHolder:String
+			placeHolder: String,
+			icon: String,
 		},
 		directives: { cleave },
 		data() {
 			return {
+				lock: 'lock',
 				radioButton: '',
 				rawValue: '',
 				value: '',
@@ -101,7 +121,7 @@
 	};
 </script>
 <style scoped>
-.w-400{
-	width:100px !important;
-}
+	.w-400 {
+		width: 100px !important;
+	}
 </style>
